@@ -4,9 +4,12 @@ class userInput
    Scanner sc = new Scanner(System.in); 
    String customername , mobileno , email, emailid ,password , correctpassword; 
 	int  events ;
-   boolean registered;
+   boolean registered,loggedIn;
+   void Intitial(){
+      System.out.println
+   }
    void login() {
-        boolean loggedIn = false;
+        loggedIn = false;
         int attempts = 0;
         int MAX_ATTEMPTS = 3;
 
@@ -27,6 +30,7 @@ class userInput
 			{
                 attempts++;
                 System.out.println("Invalid password or ID. Attempts left: " + (MAX_ATTEMPTS - attempts));
+                continue;
             }
         }
 
@@ -35,7 +39,7 @@ class userInput
             System.out.println("Too many failed attempts. Exiting the system.");
         }
     }
-    boolean signup()
+    void signup()
 	{ 
 
 		
@@ -46,18 +50,15 @@ class userInput
 	{
 		int a;
         
-        System.out.println(" KINDLY ENTER YOUR NAME");
+       System.out.println(" KINDLY ENTER YOUR NAME");
 	customername=sc.next();
     int length = customername.length();
     for( a=0; a< length; a++)
 	{
-
-		
-		int q;
+    	int q;
                     q = customername.charAt(a);
 		if(q >= 'A' && q <= 'Z' ||  q >= 'a' && q <= 'z' ||  q == ' ' )
 		{
-			
 			continue;
 		}
 		else
@@ -108,8 +109,8 @@ class userInput
 			System.out.println("length must be 10");
             break;
 	}
-	}
-	}
+ }
+ }
     boolean b = true;
 	while(b)
 	{
@@ -134,7 +135,7 @@ class userInput
 					continue;
 				}
 			}
-			b = false;
+			
 			break;
 		}
 		else
@@ -143,12 +144,23 @@ class userInput
 		}
 	}
 
-	
-	return false;
-   
-  
+   }
+   void check()
+	{
+		boolean b = false;
+		
+	if(customername.isEmpty() || email.isEmpty() || password.isEmpty() || mobileno.isEmpty() )
+		{
+			System.out.println("Error coudn't sign in");	
+		}
+		else
+		{
+			System.out.println("Sign in successful.");
+         registered = true;	
+		}
+   }
 }
-class eventManager 
+class eventManager
 {
    void setUserInfo()
    {
@@ -170,21 +182,27 @@ class eventManager
     userArray[0] = u1;
     userArray[1] = u2;
     userArray[2] = u3;
-    for(int i =0; i < 3; i++)
+    System.out.println("Welcome");
+    System.out.println(" 1.REGISTER");
+	 System.out.println(" 2.login");
+	 
+	
+   /*for(int i =0; i < 3; i++)
     {
       boolean lg = true;
       while(lg){
       if(userArray[i].registered)
       {
          userArray[i].login();
-         
+         break; 
       }
       else
       {
          userArray[i].signup();
+         userArray[i].check();
       }
       }
-    }
+    }*/
    }
 }
 class mm
